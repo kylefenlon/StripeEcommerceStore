@@ -12,15 +12,18 @@ const ProductCard = (props) => {
     return (
         <Card>
             <Card.Body>
+                <div style={{ height: "200px", overflow: "hidden" }}>
+                    <img src={product.img} alt="img" style={{ width: "100%" }} />
+                </div>
                 <Card.Title>{product.title}</Card.Title>
                 <Card.Text>£{product.price}</Card.Text>
                 {productQuantity > 0 ?
                     <>
                         <Form as={Row}>
                             <Form.Label coumn="true" sm="6">In Cart: {productQuantity}</Form.Label>
-                            <Col sm="6">
-                                <Button sm="6" onClick={() => cart.addToCart(product.id)} className='mx-2'>+</Button>
+                            <Col sm="12">
                                 <Button sm="6" onClick={() => cart.removeFromCart(product.id)} className='mx-2'>-</Button>
+                                <Button sm="6" onClick={() => cart.addToCart(product.id)} className='mx-2'>+</Button>
                             </Col>
                         </Form>
                         <Button variant="danger" onClick={() => cart.deleteFromCart(product.id)} className='my-2'>Remove From CART</Button>
