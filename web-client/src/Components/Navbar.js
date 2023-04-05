@@ -2,6 +2,7 @@ import { Button, Container, Navbar, Modal, Nav, ModalBody } from 'react-bootstra
 import { useState, useContext } from 'react';
 import { CartContext } from '../CartContext';
 import CartProduct from './CartProduct';
+import "./Navbar.css"
 
 
 
@@ -14,7 +15,7 @@ const NavbarComponent = () => {
     const handleShow = () => setShow(true);
 
     const checkout = async () => {
-        await fetch('http://localhost:4000/checkout', {
+        await fetch(process.env.REACT_APP_BASE_URL + '/checkout', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -34,7 +35,7 @@ const NavbarComponent = () => {
     return (
         <>
             <Navbar exapnd="sm">
-                <Navbar.Brand href="/">Eccomerce Store</Navbar.Brand>
+                <Navbar.Brand className="nav-left" href="/">Eccomerce Store</Navbar.Brand>
                 <Navbar.Toggle />
                 <Navbar.Collapse className="justify-content-end">
                     <Button onClick={handleShow}>Cart ({productsCount} Items)</Button>
